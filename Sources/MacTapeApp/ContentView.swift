@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var model: AppModel
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
-    @State private var pendingRunMode: RunMode?
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
@@ -27,28 +26,6 @@ struct ContentView: View {
             Button("OK") { model.userFacingError = nil }
         } message: {
             Text(model.userFacingError ?? "")
-        }
-        .alert(
-            "Run “\(model.selectedWorkflow?.name ?? "Tape")”?",
-            isPresented: Binding(
-                get: { pendingRunMode != nil },
-                set: { if !$0 { pendingRunMode = nil } }
-            ),
-            presenting: pendingRunMode
-        ) { mode in
-            Button(mode == .dryRun ? "Start Dry Run" : "Run Now") {
-                pendingRunMode = nil
-                model.start(mode)
-            }
-            Button("Cancel", role: .cancel) {
-                pendingRunMode = nil
-            }
-        } message: { mode in
-            if mode == .live {
-                Text("MacTape will perform \(model.selectedWorkflow?.enabledStepCount ?? 0) enabled actions. Keep the console visible and be ready to stop the run.")
-            } else {
-                Text("Dry Run inspects and explains each enabled action without performing it.")
-            }
         }
         .task {
             await model.bootstrap()

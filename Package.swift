@@ -9,7 +9,7 @@ let package = Package(
     ],
     products: [
         .library(name: "MacTapeCore", targets: ["MacTapeCore"]),
-        .executable(name: "MacTape", targets: ["MacTapeApp"]),
+        .executable(name: "MacTapeDesktop", targets: ["MacTapeApp"]),
         .executable(name: "mactape", targets: ["mactape"]),
     ],
     targets: [

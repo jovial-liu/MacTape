@@ -12,8 +12,8 @@ if [[ "${UNIVERSAL:-0}" == 1 ]]; then
 fi
 
 cd "${PROJECT_DIR}"
-swift build "${BUILD_OPTIONS[@]}" --product MacTape
-BINARY_PATH="$(swift build "${BUILD_OPTIONS[@]}" --show-bin-path)/MacTape"
+swift build "${BUILD_OPTIONS[@]}" --product MacTapeDesktop
+BINARY_PATH="$(swift build "${BUILD_OPTIONS[@]}" --show-bin-path)/MacTapeDesktop"
 
 /bin/rm -rf "${APP_DIR}"
 /bin/mkdir -p "${CONTENTS_DIR}/MacOS" "${CONTENTS_DIR}/Resources"

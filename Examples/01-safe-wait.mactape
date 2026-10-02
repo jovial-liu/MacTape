@@ -1,0 +1,23 @@
+{
+  "createdAt" : "2026-09-04T00:00:00.000Z",
+  "formatVersion" : 1,
+  "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB01",
+  "name" : "My first tape",
+  "steps" : [
+    {
+      "action" : { "duration" : 0.5, "type" : "wait" },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB11",
+      "isEnabled" : true,
+      "note" : "A harmless first step. This tape does not click, type, or open apps."
+    },
+    {
+      "action" : { "duration" : 1, "type" : "wait" },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB12",
+      "isEnabled" : true,
+      "note" : "Try Stop during this wait, then run again."
+    }
+  ],
+  "summary" : "Start here: two short waits, with no changes to your Mac.",
+  "updatedAt" : "2026-09-04T00:00:00.000Z",
+  "variables" : []
+}

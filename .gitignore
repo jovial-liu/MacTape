@@ -1,0 +1,12 @@
+.DS_Store
+/.build/
+/dist/
+/DerivedData/
+/work/
+/outputs/
+*.xcuserstate
+xcuserdata/
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+*.mactape.local
+*.dmg

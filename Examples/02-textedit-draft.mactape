@@ -1,0 +1,36 @@
+{
+  "createdAt" : "2026-09-04T00:00:00.000Z",
+  "formatVersion" : 1,
+  "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB02",
+  "name" : "Draft a note in TextEdit",
+  "steps" : [
+    {
+      "action" : { "arguments" : [], "bundleIdentifier" : "com.apple.TextEdit", "timeout" : 10, "type" : "openApp", "waitUntilRunning" : true },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB21",
+      "isEnabled" : true,
+      "note" : "Review first. TextEdit should have no modal dialog open."
+    },
+    {
+      "action" : { "key" : "n", "modifiers" : ["command"], "type" : "shortcut" },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB22",
+      "isEnabled" : true,
+      "note" : "Create a new document in TextEdit."
+    },
+    {
+      "action" : { "duration" : 1, "type" : "wait" },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB23",
+      "isEnabled" : true
+    },
+    {
+      "action" : { "clearExisting" : false, "text" : "Hello, {{name}}!\n\nThis note was replayed by MacTape.\nIt has not been saved or sent.", "type" : "typeText", "typingDelay" : 0.01 },
+      "id" : "A069DA82-87F2-44DD-BAD5-1A8E7E07AB24",
+      "isEnabled" : true,
+      "note" : "Explicit text is typed into the focused document. Dry Run does not type."
+    }
+  ],
+  "summary" : "Open TextEdit, create a document, and type a greeting. Does not save or send anything. Requires Accessibility permission for live replay.",
+  "updatedAt" : "2026-09-04T00:00:00.000Z",
+  "variables" : [
+    { "defaultValue" : "Mac", "isRequired" : true, "isSecret" : false, "name" : "name", "summary" : "Who should this note greet?" }
+  ]
+}

@@ -1,0 +1,37 @@
+name: Release preview
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test
+        run: swift test --build-system native --parallel
+      - name: Build universal app and disk image
+        env:
+          UNIVERSAL: '1'
+        run: Scripts/package-dmg.sh
+      - name: Build universal CLI
+        run: |
+          swift build --build-system native -c release --arch arm64 --arch x86_64 --product mactape
+          CLI_DIR="$(swift build --build-system native -c release --arch arm64 --arch x86_64 --show-bin-path)"
+          tar -czf dist/mactape-cli-macos-universal.tar.gz -C "$CLI_DIR" mactape
+      - name: Checksums
+        working-directory: dist
+        run: shasum -a 256 *.dmg *.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MacTape-preview
+          path: |
+            dist/*.dmg
+            dist/*.tar.gz
+            dist/SHA256SUMS

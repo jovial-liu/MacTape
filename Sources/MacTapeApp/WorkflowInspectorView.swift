@@ -189,17 +189,9 @@ private struct StepInspectorView: View {
 
     private var safety: some View {
         InspectorSection(title: "Failure behavior") {
-            Toggle("Continue if this step fails", isOn: $step.configuration.continueOnFailure)
-                .font(.subheadline)
-            if step.configuration.continueOnFailure {
-                Text("Use sparingly: later steps may depend on this result.")
-                    .font(.caption)
-                    .foregroundStyle(.orange)
-            } else {
-                Text("Recommended. The tape stops here and leaves later actions untouched.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+            Text("The tape stops here if this step fails. Later actions are not executed.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 

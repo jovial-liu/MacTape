@@ -14,6 +14,8 @@
 
 ![MacTape — record, understand, replay](assets/social-preview-v2.png)
 
+![MacTape timeline, step inspector, and a completed Dry Run](assets/screenshots/editor.png)
+
 MacTape turns deliberately recorded clicks and shortcuts into editable, app-scoped steps. Inspect what happened, add explicit text and waits, then replay through macOS Accessibility.
 
 It is the open-source middle ground between writing automation code and trusting an AI agent to improvise on your desktop.
